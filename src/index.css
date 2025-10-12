@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global style */
+body {
+  @apply transition-colors duration-500 font-mono bg-white text-gray-800;
+}
+
+.dark {
+  @apply bg-[#08101a] text-slate-200;
+}
+
+
+/* === Glitch effect for hacker-style name === */
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #00ff99;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  animation: glitchTop 1s infinite linear alternate-reverse;
+}
+.glitch::after {
+  animation: glitchBottom 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  50% {
+    clip: rect(0, 9999px, 40px, 0);
+    transform: translate(-5px, -2px);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+}
+@keyframes glitchBottom {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  50% {
+    clip: rect(60px, 9999px, 90px, 0);
+    transform: translate(3px, 3px);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+}
+
