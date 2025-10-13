@@ -1,10 +1,52 @@
+// ...existing code...
 import React, { useEffect, useState } from "react";
 import hackerImg from "../assets/profile_fr.jpg";
 import matrixBg from "../assets/bluematrix.jpg";
 
 export default function HeroLight() {
+  // <-- mudah diubah: ubah nilai di sini untuk mengatur warna teks/tag pada mode light
+  const LIGHT_THEME_VARS = {
+    '--project-title-color': '#22c55e',
+    '--project-desc-color': 'white',
+    '--project-tag-color': '#22c55e', // contoh hijau terang
+    '--project-tag-bg': 'rgba(52,211,153,0.06)',
+    '--project-tag-border': 'rgba(52,211,153,0.18)',
+
+    '--about-desc-color': 'black',    
+
+    '--materi-item-text': '#22c55e',
+    '--materi-item-bg': '#0b1725',
+    '--materi-item-border': 'rgba(15,23,42,0.06)',
+
+    '--resume-bg': '#0b1725',
+    '--resume-text': 'white',
+    '--resume-link-color': '#22c55e',
+    '--resume-border': '#22c55e',
+    '--resume-ts-text': '#22c55e',
+
+    '--contact-input-text': '#0f172a',
+    '--contact-input-border': 'black',
+    '--contact-btn-bg': '#22c55e',
+    '--contact-btn-text': 'black',
+    '--contact-btn-border': 'black',
+  };
+
   const [typed, setTyped] = useState("");
   const tagline = "pentester › bug hunter › security researcher";
+
+  useEffect(() => {
+    // set CSS variables saat HeroLight mount (light mode)
+    Object.entries(LIGHT_THEME_VARS).forEach(([k, v]) => {
+      document.documentElement.style.setProperty(k, v);
+    });
+    return () => {
+      // bersihkan saat unmount supaya tidak tetap mengoverride dark mode
+      Object.keys(LIGHT_THEME_VARS).forEach((k) => {
+        document.documentElement.style.removeProperty(k);
+      });
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     let i = 0;
@@ -74,3 +116,4 @@ export default function HeroLight() {
     </section>
   );
 }
+// ...existing code...

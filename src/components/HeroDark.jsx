@@ -3,6 +3,47 @@ import hackerImg from "../assets/profile_fr.jpg";     // foto profil
 import matrixBg from "../assets/bluematrix.jpg";   // background matrix
 
 export default function Hero() {
+
+  const DARK_THEME_VARS = {
+    '--project-title-color': '#e6eef8',
+    '--project-desc-color': '#94a3b8',
+    '--project-tag-color': '#34d399', // contoh hijau terang
+    '--project-tag-bg': 'rgba(52,211,153,0.06)',
+    '--project-tag-border': 'rgba(52,211,153,0.18)',
+
+    '--about-desc-color': 'white', 
+
+    '--materi-item-text': '#22c55e',
+    '--materi-item-bg': '#0b1725',
+    '--materi-item-border': 'rgba(148,163,184,0.06)',
+
+    '--resume-bg': '#0b1725',
+    '--resume-text': '#cbd5e1',
+    '--resume-link-color': '#34d399',
+    '--resume-border': '#22c55e',
+    '--resume-ts-text': '#22c55e',
+
+    '--contact-input-text': '#cbd5e1',
+    '--contact-input-border': 'white',
+    '--contact-btn-bg': '#22c55e',
+    '--contact-btn-text': '#0b1725',
+    '--contact-btn-border': 'black',
+  };
+
+  useEffect(() => {
+    // set CSS variables saat HeroDark mount
+    Object.entries(DARK_THEME_VARS).forEach(([k, v]) => {
+      document.documentElement.style.setProperty(k, v);
+    });
+    return () => {
+      // hapus saat unmount
+      Object.keys(DARK_THEME_VARS).forEach((k) => {
+        document.documentElement.style.removeProperty(k);
+      });
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [typed, setTyped] = useState("");
   const tagline = "pentester › bug hunter › security researcher";
 

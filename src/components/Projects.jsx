@@ -1,3 +1,4 @@
+// ...existing code...
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { projects } from '../data/projects';
@@ -12,13 +13,26 @@ return (
 <div key={p.id} className="p-4 border border-green-900/40 bg-[#0b1725] rounded-lg">
 <div className="flex justify-between items-start">
 <div>
-<h3 className="font-medium text-white">{p.title}</h3>
-<p className="text-slate-400 text-sm mt-1">{p.desc}</p>
+{/* gunakan CSS variable (dapat diubah di HeroLight.jsx) */}
+<h3 className="font-medium" style={{ color: 'var(--project-title-color, #ffffff)' }}>{p.title}</h3>
+<p className="text-sm mt-1" style={{ color: 'var(--project-desc-color, #94a3b8)' }}>{p.desc}</p>
 </div>
 <a href={p.link} className="p-2 text-green-300 hover:text-green-100"><ExternalLink size={16} /></a>
 </div>
 <div className="flex flex-wrap gap-2 mt-3">
-{p.tech.map((t) => <span key={t} className="text-xs border rounded px-2 py-1">{t}</span>)}
+{p.tech.map((t) => (
+  <span
+    key={t}
+    className="text-xs border rounded px-2 py-1"
+    style={{
+      color: 'var(--project-tag-color, #94a3b8)',
+      backgroundColor: 'var(--project-tag-bg, transparent)',
+      borderColor: 'var(--project-tag-border, rgba(148,163,184,0.12))'
+    }}
+  >
+    {t}
+  </span>
+))}
 </div>
 </div>
 ))}
@@ -26,3 +40,4 @@ return (
 </section>
 );
 }
+// ...existing code...
