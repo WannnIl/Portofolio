@@ -3,7 +3,7 @@ import React from 'react';
 export default function Contact() {
   return (
     <section id="contact" className="max-w-6xl mx-auto px-6">
-      <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+      <h2 className="text-3xl font-semibold mb-4">Contact</h2>
       <form onSubmit={(e)=>{e.preventDefault(); alert('Message sent (demo)')}} className="flex flex-col gap-4 max-w-md">
         <input
           placeholder="Your email"

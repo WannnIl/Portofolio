@@ -19,7 +19,9 @@
   --resume-bg: #ffffff;
   --resume-text: #0f172a;
   --resume-link-color: #10b981;
+  --resume-link-border-color: #22c55e;
   --resume-border: rgba(15,23,42,0.06);
+  --resume-ts-text: #22c55e;
 
   --contact-input-text: #0f172a;
   --contact-input-border: rgba(15,23,42,0.12);

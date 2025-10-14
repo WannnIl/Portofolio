@@ -1,26 +1,42 @@
 import React, { useEffect, useState } from "react";
-import hackerImg from "../assets/profile_fr.jpg";     // foto profil
-import matrixBg from "../assets/bluematrix.jpg";   // background matrix
+import hackerImg from "../assets/profile_fr.jpg";     
+import matrixBg from "../assets/bluematrix.jpg";  
 
 export default function Hero() {
 
   const DARK_THEME_VARS = {
-    '--project-title-color': '#e6eef8',
-    '--project-desc-color': '#94a3b8',
-    '--project-tag-color': '#34d399', // contoh hijau terang
+    /* NAV vars (dark) */
+    '--nav-bg': 'rgba(10,10,10,0.75)',
+    '--nav-link-bg': 'rgba(7,20,40,0.25)',
+    '--nav-link-text': '#cbd5e1',
+    '--nav-link-hover-bg': 'rgba(34,197,94,0.30)',
+    '--nav-active-bg': 'rgba(34,197,94,0.30)',
+    '--nav-active-text': '#ffffff',
+    '--nav-border': 'white',
+
+    '--project-title-color': '#22c55e',
+    '--project-desc-color': '#ffffff',
+    '--project-tag-color': '#22c55e', 
     '--project-tag-bg': 'rgba(52,211,153,0.06)',
     '--project-tag-border': 'rgba(52,211,153,0.18)',
+    '--project-border': '#1e3a8a',
+    '--project-bg': '#0a0a0a',
 
     '--about-desc-color': 'white', 
 
     '--materi-item-text': '#22c55e',
-    '--materi-item-bg': '#0b1725',
-    '--materi-item-border': 'rgba(148,163,184,0.06)',
+    '--materi-item-bg': '#0a0a0a',
+    '--materi-item-border': '#1e3a8a',
 
-    '--resume-bg': '#0b1725',
+    '--resume-bg': '#0a0a0a',
     '--resume-text': '#cbd5e1',
-    '--resume-link-color': '#34d399',
-    '--resume-border': '#22c55e',
+    '--resume-link-color': '#22c55e',
+    '--resume-link-color-hover': '#ffffff',
+    '--resume-link-bg': 'rgba(20, 116, 55, 0.3)',
+    '--resume-link-bg-hover': 'rgba(20, 116, 55, 0.7)',
+    '--resume-link-border-color': '#1e3a8a',
+    '--resume-link-border-color-hover': '#ffffff',
+    '--resume-border': '#1e3a8a',
     '--resume-ts-text': '#22c55e',
 
     '--contact-input-text': '#cbd5e1',

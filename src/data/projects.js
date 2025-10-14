@@ -1,16 +1,16 @@
 export const projects = [
   {
     id: 1,
-    title: 'CTF Writeups',
-    desc: 'Collection of my CTF writeups and challenges solved.',
-    tech: ['Writeups', 'Reverse', 'Forensics'],
+    title: 'LIBRAGE',
+    desc: 'LIBRAGE is a digital library management system designed to improve the efficiency of book collection management and lending transactions.',
+    tech: ['Laravel', 'FullStack' , 'PHP', 'Web'],
     link: '#'
   },
   {
     id: 2,
-    title: 'Bug Bounty Notes',
-    desc: 'Notes on recon, fuzzing, and vulnerability triage.',
-    tech: ['Burp', 'Recon', 'Fuzzing'],
+    title: 'WiseTech',
+    desc: 'Gadget review site with user authentication, admin dashboard, and comment system.',
+    tech: ['FastAPI', 'Backend', 'Python', 'Web'],
     link: '#'
   },
   {

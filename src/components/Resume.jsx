@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Resume() {
+
+  const [hover, setHover] = useState(false);
+
   return (
     <section id="resume" className="max-w-6xl mx-auto px-6 py-20">
-      <h2 className="text-2xl font-semibold mb-4">Resume</h2>
+      <h2 className="text-3xl font-semibold mb-4">Resume</h2>
       <div
         className="p-6 rounded-lg"
         style={{
@@ -19,9 +22,13 @@ export default function Resume() {
           href="/resume.pdf"
           download
           className="inline-block px-4 py-2 rounded-md hover:opacity-95 transition"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
           style={{
-            color: 'var(--resume-link-color, #34d399)',
-            border: '1px solid var(--resume-border, rgba(34,197,94,0.15))'
+            backgroundColor: hover ? 'var(--resume-link-bg-hover)' : 'var(--resume-link-bg)',
+            color:'var(--resume-link-color-hover)',
+            border: '1px solid',
+            borderColor: hover ? 'var(--resume-link-border-color-hover)' : 'var(--resume-link-border-color)',
           }}
         >
           ⬇ Download Resume

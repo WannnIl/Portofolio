@@ -6,22 +6,38 @@ import matrixBg from "../assets/bluematrix.jpg";
 export default function HeroLight() {
   // <-- mudah diubah: ubah nilai di sini untuk mengatur warna teks/tag pada mode light
   const LIGHT_THEME_VARS = {
-    '--project-title-color': '#22c55e',
-    '--project-desc-color': 'white',
-    '--project-tag-color': '#22c55e', // contoh hijau terang
+    /* NAV vars (light) */
+    '--nav-bg': 'rgba(255,255,255,0.85)',
+    '--nav-link-bg': 'rgba(255,255,255,0.3)',
+    '--nav-link-text': '#0f172a',
+    '--nav-link-hover-bg': 'rgba(34,197,94,0.4)',
+    '--nav-active-bg': 'rgba(34,197,94,0.4)',
+    '--nav-active-text': '#0f172a',
+    '--nav-border': 'black',
+
+    '--project-title-color': '#1e3a8a',
+    '--project-desc-color': '#000000',
+    '--project-tag-color': '#22c55e',
     '--project-tag-bg': 'rgba(52,211,153,0.06)',
-    '--project-tag-border': 'rgba(52,211,153,0.18)',
+    '--project-tag-border': '#000000',
+    '--project-border': '#000000',
+    '--project-bg': '#e3edff',
 
     '--about-desc-color': 'black',    
 
-    '--materi-item-text': '#22c55e',
-    '--materi-item-bg': '#0b1725',
-    '--materi-item-border': 'rgba(15,23,42,0.06)',
+    '--materi-item-text': '#1e3a8a',
+    '--materi-item-bg': '#e3edff',
+    '--materi-item-border': '#000000',
 
-    '--resume-bg': '#0b1725',
-    '--resume-text': 'white',
-    '--resume-link-color': '#22c55e',
-    '--resume-border': '#22c55e',
+    '--resume-bg': '#e3edff',
+    '--resume-text': '#000000',
+    '--resume-link-color': '#ffffff',
+    '--resume-link-color-hover': '#000000',
+    '--resume-link-bg': 'rgba(20, 116, 55, 0.2)',
+    '--resume-link-bg-hover': 'rgba(20, 116, 55, 0.7)',
+    '--resume-link-border-color': '#22c55e',
+    '--resume-link-border-color-hover': '#000000',
+    '--resume-border': '#000000',
     '--resume-ts-text': '#22c55e',
 
     '--contact-input-text': '#0f172a',

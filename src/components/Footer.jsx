@@ -30,7 +30,7 @@ export default function Footer() {
           <Twitter size={18} />
         </a>
       </div>
-      <div>© {new Date().getFullYear()} Ilham Kurniawan — Hacker-style Portfolio</div>
+      <div>© {new Date().getFullYear()} Ilham Kurniawan — My Portofolio</div>
     </footer>
   );
 }

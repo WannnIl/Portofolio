@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+// ...existing code...
+import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from "../context/ThemeContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { darkMode, setDarkMode } = useTheme();
-  const [activeLink, setActiveLink] = useState(null); // changed to null
+  const [activeLink, setActiveLink] = useState(null);
+  const [hoveredLink, setHoveredLink] = useState(null);
+
+  const manualActiveRef = useRef(false);
+  const manualTimerRef = useRef(null);
 
   const navLinks = [
     { href: '#about', label: 'About' },
@@ -14,6 +19,41 @@ export default function Header() {
     { href: '#contact', label: 'Contact' },
   ];
 
+  // handle nav clicks: smooth scroll with header offset, set active immediately,
+  // and lock automatic detection for a short time so it doesn't override.
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const id = href.slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // header height offset
+    const headerEl = document.querySelector('header');
+    const headerHeight = headerEl ? headerEl.offsetHeight : 80;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+
+    // set active immediately (visual feedback)
+    setActiveLink(href);
+
+    // mark manual active to avoid override by updateActive
+    manualActiveRef.current = true;
+    if (manualTimerRef.current) clearTimeout(manualTimerRef.current);
+    manualTimerRef.current = setTimeout(() => {
+      manualActiveRef.current = false;
+      manualTimerRef.current = null;
+      // small delay to allow browser to finish scroll
+      requestAnimationFrame(() => {
+        // no-op: updateActive in useEffect will run on scroll/resizes; we just leave it.
+      });
+    }, 700); // match smooth scroll duration (adjust if needed)
+
+    // smooth scroll
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    // close mobile menu if open
+    setMenuOpen(false);
+  };
+
   useEffect(() => {
     // pilih section yang paling "dekat" dengan center viewport
     const ids = ['hero', ...navLinks.map(n => n.href.slice(1))];
@@ -21,6 +61,9 @@ export default function Header() {
 
     let raf = null;
     const updateActive = () => {
+      // if manual nav recently triggered, skip automatic override
+      if (manualActiveRef.current) return;
+
       const sections = getSections();
       if (!sections.length) return;
       const center = window.innerHeight / 2;
@@ -51,6 +94,7 @@ export default function Header() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       if (raf) cancelAnimationFrame(raf);
+      if (manualTimerRef.current) clearTimeout(manualTimerRef.current);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -58,9 +102,10 @@ export default function Header() {
     'px-3 py-1 rounded-md transition text-gray-800 dark:text-slate-200 flex items-center';
 
   return (
+    // ...existing JSX...
     <header className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md shadow-md transition-all duration-300">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* === LOGO === */}
+        {/* LOGO */}
         <a
           href="#hero"
           onClick={() => { setActiveLink(null); setMenuOpen(false); }}
@@ -69,16 +114,28 @@ export default function Header() {
           🛡️Rixel0x
         </a>
 
-        {/* === NAVBAR CENTER === */}
         <nav className="hidden md:flex gap-3 text-sm opacity-90 justify-center flex-1">
           {navLinks.map(link => {
             const isActive = activeLink === link.href;
+            const isHovered = hoveredLink === link.href;
+            const bg = isHovered ? 'var(--nav-link-hover-bg)' : isActive ? 'var(--nav-active-bg)' : 'var(--nav-link-bg)';
+            const color = isActive ? 'var(--nav-active-text)' : 'var(--nav-link-text)';
+            const borderColor = isActive ? 'var(--nav-active-border, var(--nav-border))' : 'var(--nav-border)';
+            const borderWidth = isActive ? '2px' : '1px';
+
             return (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setActiveLink(link.href)}
-                className={`${linkBase} ${isActive ? 'bg-green-700/25 text-white ring-1 ring-green-400/30' : 'bg-white/30 dark:bg-[#071428]/40'} hover:bg-green-700/30`}
+                onClick={(e) => handleNavClick(e, link.href)}
+                onMouseEnter={() => setHoveredLink(link.href)}
+                onMouseLeave={() => setHoveredLink(null)}
+                className={linkBase + ' bg-white/30 dark:bg-[#071428]/40 hover:bg-green-700/20 dark:hover:bg-green-700/30 transition text-gray-800 dark:text-slate-200'}
+                style={{
+                  backgroundColor: bg,
+                  color,
+                  border: `${borderWidth} solid ${borderColor}`,
+                }}
               >
                 {link.label}
               </a>
@@ -86,7 +143,7 @@ export default function Header() {
           })}
         </nav>
 
-        {/* === RIGHT SIDE === */}
+        {/* right side unchanged */}
         <div className="flex items-center gap-4">
           {/* Theme Toggle */}
           <button
@@ -105,7 +162,7 @@ export default function Header() {
           {/* Resume button */}
           <a
             href="#resume"
-            className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 border border-green-700 rounded-md text-sm font-medium hover:bg-green-700/30 bg-white/30 dark:bg-[#071428]/40"
+            className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 border border-green-700 rounded-md text-sm font-medium hover:bg-green-700/30 bg-white/30 dark:bg-green-900/10 dark:hover:bg-green-700/30"
           >
             Resume
           </a>
@@ -134,18 +191,25 @@ export default function Header() {
         </div>
       </div>
 
-      {/* === MOBILE MENU === */}
+      {/* mobile menu unchanged (keep click behavior) */}
       {menuOpen && (
         <div className="absolute top-16 left-0 right-0 bg-white dark:bg-[#08101a] md:hidden px-6 pb-6">
           <div className="flex flex-col gap-3">
             {navLinks.map(link => {
               const isActive = activeLink === link.href;
+              const mobileBorderColor = isActive ? 'var(--nav-active-border, var(--nav-border))' : 'var(--nav-border)';
+              const mobileBorderWidth = isActive ? '2px' : '1px';
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => { setMenuOpen(false); setActiveLink(link.href); }}
-                  className={`block px-3 py-2 rounded-md transition text-gray-800 dark:text-slate-200 ${isActive ? 'bg-green-700/25 text-white' : 'bg-white/30 dark:bg-[#071428]/40'} hover:bg-green-700/30`}
+                  onClick={(e) => { handleNavClick(e, link.href); }}
+                  className="block px-3 py-2 rounded-md transition text-gray-800 dark:text-slate-200"
+                  style={{
+                    backgroundColor: isActive ? 'var(--nav-active-bg)' : 'var(--nav-link-bg)',
+                    color: isActive ? 'var(--nav-active-text)' : 'var(--nav-link-text)',
+                    border: `${mobileBorderWidth} solid ${mobileBorderColor}`,
+                  }}
                 >
                   {link.label}
                 </a>
@@ -157,4 +221,4 @@ export default function Header() {
     </header>
   );
 }
-
+// ...existing code...

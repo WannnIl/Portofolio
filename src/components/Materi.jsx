@@ -4,7 +4,7 @@ import { materi } from '../data/materi';
 export default function Materi() {
   return (
     <section id="materi" className="max-w-6xl scroll-mt-20 mx-auto px-6">
-      <h2 className="text-2xl font-semibold mb-6">Materi Pembelajaran</h2>
+      <h2 className="text-3xl font-semibold mb-6">Materi Pembelajaran</h2>
       <ul className="grid sm:grid-cols-2 gap-3" style={{ color: 'var(--materi-item-text)' }}>
         {materi.map((m, i) => (
           <li
