@@ -20,15 +20,15 @@ export default function Hero() {
     '--project-tag-bg': 'rgba(52,211,153,0.06)',
     '--project-tag-border': 'rgba(52,211,153,0.18)',
     '--project-border': '#1e3a8a',
-    '--project-bg': '#0a0a0a',
+    '--project-bg': 'rgba(10, 10, 10, 0.5)',
 
     '--about-desc-color': 'white', 
 
     '--materi-item-text': '#22c55e',
-    '--materi-item-bg': '#0a0a0a',
+    '--materi-item-bg': 'rgba(10, 10, 10, 0.5)',
     '--materi-item-border': '#1e3a8a',
 
-    '--resume-bg': '#0a0a0a',
+    '--resume-bg': 'rgba(10, 10, 10, 0.5)',
     '--resume-text': '#cbd5e1',
     '--resume-link-color': '#22c55e',
     '--resume-link-color-hover': '#ffffff',

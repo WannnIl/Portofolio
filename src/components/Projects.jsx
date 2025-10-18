@@ -10,7 +10,7 @@ return (
 <h2 className="text-3xl font-semibold mb-6">Projects</h2>
 <div className="grid sm:grid-cols-2 gap-6">
 {projects.map((p) => (
-<div key={p.id} className="p-4 border rounded-lg bg-transparent" 
+<div key={p.id} className="p-4 border rounded-lg hover:scale-[1.05] transition-all" 
   style={{ 
     borderColor: 'var(--project-border)', 
     backgroundColor: 'var(--project-bg)',
@@ -21,7 +21,15 @@ return (
 <h3 className="font-medium" style={{ color: 'var(--project-title-color, #ffffff)' }}>{p.title}</h3>
 <p className="text-sm mt-1" style={{ color: 'var(--project-desc-color, #94a3b8)' }}>{p.desc}</p>
 </div>
-<a href={p.link} className="p-2 text-gray-500 hover:text-green-900"><ExternalLink size={16} /></a>
+<a 
+  href={p.link} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="p-2 text-gray-500 hover:text-green-900 hover:scale-110 transition-transform"
+  title="Lihat repository"
+>
+  <ExternalLink size={16} />
+</a>
 </div>
 <div className="flex flex-wrap gap-2 mt-3">
 {p.tech.map((t) => (
