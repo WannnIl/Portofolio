@@ -3,8 +3,11 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="max-w-6xl mx-auto mt-5 px-6 py-8 text-center text-xs text-slate-400 flex flex-col items-center gap-2">
-      <div className="flex items-center gap-2 text-green-400">
+    <footer className="max-w-6xl mx-auto mt-20 px-6 py-8 text-center text-xs text-slate-400 flex flex-col items-center gap-2">
+      {/* Garis Pemisah */}
+      <div className="w-full border-t border-gray-300 dark:border-gray-700 mb-6"></div>
+      
+      <div className="flex items-center mb-3 gap-2 text-green-400">
         <a
           href="https://github.com/WannnIl"
           target="_blank"
@@ -14,7 +17,7 @@ export default function Footer() {
           <Github size={18} />
         </a>
         <a
-          href="https://linkedin.com/in/"
+          href="https://www.linkedin.com/in/ilham-kurniawan-a93b30304/"
           target="_blank"
           rel="noreferrer"
           className="hover:text-green-300 transition"
@@ -22,7 +25,7 @@ export default function Footer() {
           <Linkedin size={18} />
         </a>
         <a
-          href="https://x.com/"
+          href="https://x.com/wannn_il"
           target="_blank"
           rel="noreferrer"
           className="hover:text-green-300 transition"

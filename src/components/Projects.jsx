@@ -6,7 +6,7 @@ import { projects } from '../data/projects';
 
 export default function Projects() {
 return (
-<section id="projects" className="max-w-6xl mx-auto px-6 py-20">
+<section id="projects" className="max-w-6xl scroll mx-auto px-6 mb-20">
 <h2 className="text-3xl font-semibold mb-6">Projects</h2>
 <div className="grid sm:grid-cols-2 gap-6">
 {projects.map((p) => (
@@ -52,4 +52,3 @@ return (
 </section>
 );
 }
-// ...existing code...

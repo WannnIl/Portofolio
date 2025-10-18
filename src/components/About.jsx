@@ -9,7 +9,7 @@ export default function About() {
         penetration testing, network security, and malware analysis. I love exploring vulnerabilities, 
         automating recon workflows, and sharing knowledge about ethical hacking.
       </p>
-      <p className="text-base mt-3" style={{ color: 'var(--about-desc-color' }}>
+      <p className="text-base mt-3 mb-20" style={{ color: 'var(--about-desc-color' }}>
         Currently pursuing a degree in Information Systems, I balance academics, research, and community activities 
         while contributing to open-source cybersecurity tools and learning advanced exploitation.
       </p>
