@@ -90,3 +90,60 @@ body {
   }
 }
 
+/* === Skill Icon Animations === */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.6));
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply subtle animation to skill icons */
+.skill-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+.skill-icon:hover {
+  animation: pulse-glow 0.5s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+/* === Infinite Scrolling Banner === */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
+

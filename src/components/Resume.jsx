@@ -5,7 +5,7 @@ export default function Resume() {
   const [hover, setHover] = useState(false);
 
   return (
-    <section id="resume" className="max-w-6xl mx-auto px-6 mb-28">
+    <section id="resume" className="max-w-6xl scroll-mt-20 mx-auto px-6 mb-28">
       <h2 className="text-3xl font-semibold mb-4">Resume</h2>
       <div
         className="p-6 rounded-lg"

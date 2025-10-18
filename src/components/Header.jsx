@@ -1,4 +1,3 @@
-// ...existing code...
 import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from "../context/ThemeContext";
@@ -15,6 +14,7 @@ export default function Header() {
   const navLinks = [
     { href: '#about', label: 'About' },
     { href: '#projects', label: 'Projects' },
+    { href: '#skills', label: 'Skills' },
     { href: '#materi', label: 'Materi' },
     { href: '#contact', label: 'Contact' },
   ];
@@ -102,7 +102,6 @@ export default function Header() {
     'px-3 py-1 rounded-md transition text-gray-800 dark:text-slate-200 flex items-center';
 
   return (
-    // ...existing JSX...
     <header className="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md shadow-md transition-all duration-300">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* LOGO */}
@@ -221,4 +220,3 @@ export default function Header() {
     </header>
   );
 }
-// ...existing code...

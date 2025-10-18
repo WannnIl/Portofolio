@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import hackerImg from "../assets/profile_fr.jpg";     
-import matrixBg from "../assets/bluematrix.jpg";  
+import matrixBg from "../assets/bluematrix.jpg";
 
 export default function Hero() {
 
@@ -47,12 +47,10 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    // set CSS variables saat HeroDark mount
     Object.entries(DARK_THEME_VARS).forEach(([k, v]) => {
       document.documentElement.style.setProperty(k, v);
     });
     return () => {
-      // hapus saat unmount
       Object.keys(DARK_THEME_VARS).forEach((k) => {
         document.documentElement.style.removeProperty(k);
       });
@@ -60,10 +58,27 @@ export default function Hero() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const taglines = [
+    "pentester › bug hunter › security researcher",
+    "web developer › cybersecurity enthusiast › ctf player",
+    "python › php › react › laravel › ethical hacking",
+    "code › hack › secure › repeat"
+  ];
+
   const [typed, setTyped] = useState("");
-  const tagline = "pentester › bug hunter › security researcher";
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+  const tagline = taglines[currentTaglineIndex];
 
   useEffect(() => {
+    const rotateInterval = setInterval(() => {
+      setCurrentTaglineIndex((prev) => (prev + 1) % taglines.length);
+    }, 5000);
+    return () => clearInterval(rotateInterval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setTyped("");
     let i = 0;
     const interval = setInterval(() => {
       setTyped(tagline.slice(0, i));
@@ -71,7 +86,7 @@ export default function Hero() {
       if (i > tagline.length) clearInterval(interval);
     }, 60);
     return () => clearInterval(interval);
-  }, []);
+  }, [tagline]);
 
   return (
     <section
@@ -98,9 +113,8 @@ export default function Hero() {
             <span className="animate-pulse">▮</span>
           </p>
           <p className="text-slate-300 max-w-xl mt-5 leading-relaxed">
-            Security researcher & CTF player passionate about ethical hacking,
-            automation, and digital forensics. Exploring vulnerabilities and
-            building tools that empower security communities.
+            Information Systems student with a strong passion for cybersecurity and web development. 
+            Experienced in penetration testing, bug hunting, and building web applications.
           </p>
           <div className="mt-6 flex gap-3">
             <a

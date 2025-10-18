@@ -21,6 +21,8 @@ dist-ssr
 PUSH_CHECKLIST.md
 SECURITY.md
 README_PORTFOLIO.md
+AUTO_REPLY_SETUP.md
+GITHUB_PUSH_GUIDE.md
 
 # Editor directories and files
 .vscode/*
