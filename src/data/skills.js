@@ -180,6 +180,16 @@ export const skills = {
         bounty: 'Duplicate',
         link: '#',
         imageUrl: 'https://media.licdn.com/dms/image/v2/D5622AQEa9efjtBilLA/feedshare-shrink_800/B56ZlxTJxlKAAk-/0/1758542470752?e=1762387200&v=beta&t=c8858BXcxgZUPMIshP4-EXucI_yME21z3yA9gGERjfM'
+      },
+      {
+        name: 'Reflected XSS Vulnerability Discovery',
+        platform: 'Perusahaan Media Online',
+        organization: 'detikcom',
+        severity: 'Medium',
+        year: 'Oktober 22, 2025',
+        bounty: 'Certificate of Appreciation and Merchandise',
+        link: '#',
+        imageUrl: 'https://raw.githubusercontent.com/WannnIl/Sertifikat-Certificate/refs/heads/main/Ilham%20Kurniawan.png'
       }
     ],
     professional: [
