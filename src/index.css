@@ -185,3 +185,45 @@ body {
   animation: shimmer 2s infinite;
 }
 
+/* === Materi: styling khusus untuk blok kode === */
+/* Gunakan kelas .materi-code pada <pre> untuk menonjolkan potongan kode */
+.materi-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+}
+.materi-code {
+  display: block;
+}
+.materi-code {
+  margin: 0 0 1rem 0;
+}
+.materi-code pre {
+  background: #0b1220; /* gelap */
+  color: #e6eef8; /* terang */
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 2px 10px rgba(2,6,23,0.4);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.materi-code code {
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
+/* Dark-mode tweak when body has .dark */
+.dark .materi-code pre {
+  background: #071027;
+  color: #dbeafe;
+  border-color: rgba(255,255,255,0.03);
+}
+
+@media (max-width: 640px) {
+  .materi-code pre {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+}
+

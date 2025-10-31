@@ -190,6 +190,16 @@ export const skills = {
         bounty: 'Certificate of Appreciation and Merchandise',
         link: '#',
         imageUrl: 'https://raw.githubusercontent.com/WannnIl/Sertifikat-Certificate/refs/heads/main/Ilham%20Kurniawan.png'
+      },
+      {
+        name: 'Sensitive Information Disclosure Discovery',
+        platform: 'Pemerintahan',
+        organization: 'Dinas Komunikasi dan Informatika Pemerintah Kabupaten Sukoharjo',
+        severity: 'Medium',
+        year: 'Oktober 30, 2025',
+        bounty: 'Certificate of Appreciation',
+        link: '#',
+        imageUrl: 'https://raw.githubusercontent.com/WannnIl/Sertifikat-Certificate/refs/heads/main/ilham%20kurniawan_sign_sukoharjo.jpg'
       }
     ],
     professional: [
